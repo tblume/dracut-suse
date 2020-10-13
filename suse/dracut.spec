@@ -64,8 +64,6 @@ Provides:       mkinitrd = 2.8.2
 BuildRoot:      %{_tmppath}/%{name}-%{version}-build
 %{?systemd_requires}
 
-Patch1:         0001-TEST-03-USR-MOUNT-suppress-multipath.patch
-
 %description
 Dracut contains tools to create a bootable initramfs for Linux kernels >= 2.6.
 Dracut contains various modules which are driven by the event-based udev
