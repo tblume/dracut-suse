@@ -106,6 +106,7 @@ test_setup() {
     # devices, volume groups, encrypted partitions, etc.
     $basedir/dracut.sh -l -i $TESTDIR/overlay / \
 	-m "dash crypt lvm mdraid udev-rules base rootfs-block fs-lib kernel-modules" \
+	-o "multipath" \
 	-d "piix ide-gd_mod ata_piix ext2 sd_mod" \
         --no-hostonly-cmdline -N \
 	-f $TESTDIR/initramfs.makeroot $KVERSION || return 1
