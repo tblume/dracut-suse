@@ -52,6 +52,7 @@ test_run() {
     client_run rd.luks.uuid=$LUKS_UUID rd.md.uuid=$MD_UUID rd.lvm.lv=dracut/failme failme && return 1
     client_run rd.luks.uuid=$LUKS_UUID rd.md.uuid=$MD_UUID rd.lvm.lv=dracut/root || return 1
 
+    sed -i -e 's#dracut-root-block-xxxxxxx#dracut-root-block-success#' $TESTDIR/root.ext2
     return 0
 }
 
