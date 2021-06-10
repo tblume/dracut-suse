@@ -178,6 +178,10 @@ EOF
         wait_for_ipv6_dad $netif
     fi
 
+    #take the dhcp boot information from leasinfo if there are any
+    sed -n 's/ROOTPATH/new_root_path/p;s/BOOTSERVERADDR/new_next_server/p' < "/tmp/leaseinfo.${netif}.dhcp.ipv${1:1:1}" > /tmp/dhclient.${netif}.dhcpopts
+    [ -s "/tmp/leaseinfo.${netif}.dhcp.ipv${1:1:1}" ] || rm "/tmp/leaseinfo.${netif}.dhcp.ipv${1:1:1}"
+
     return 0
 }
 
