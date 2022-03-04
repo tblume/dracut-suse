@@ -166,6 +166,7 @@ install -m 0644 suse/s390x_persistent_device.conf %{buildroot}%{_sysconfdir}/dra
 %endif
 
 install -D -m 0755 suse/mkinitrd-suse.sh %{buildroot}/%{dracut_sbindir}/mkinitrd
+install -D -m 0755 suse/persistent-ibft-interface.sh %{buildroot}/%{dracut_sbindir}/set-persistent-ibft-interface
 
 mv %{buildroot}%{_mandir}/man8/mkinitrd-suse.8 %{buildroot}%{_mandir}/man8/mkinitrd.8
 
@@ -269,6 +270,7 @@ fi
 %{_bindir}/lsinitrd
 %{_datarootdir}/bash-completion/completions/lsinitrd
 %{_datadir}/pkgconfig/dracut.pc
+%{dracut_sbindir}/set-persistent-ibft-interface
 
 %config(noreplace) %{_sysconfdir}/dracut.conf
 %dir %{_sysconfdir}/dracut.conf.d
