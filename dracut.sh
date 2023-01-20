@@ -257,6 +257,8 @@ Creates initial ramdisk images for preloading modules
                          build.
   --keep                Keep the temporary initramfs for debugging purposes.
   --printsize           Print out the module install size.
+  --keep-cryptkeyfiles  Don't remove keyfiles for decryption when entering the
+                        emergency shell (use with crypt module)
   --sshkey [SSHKEY]     Add SSH key to initramfs (use with ssh-client module)
   --logfile [FILE]      Logfile to use (overrides configuration setting)
   --check-supported     Check to ensure that modules are marked supported when
@@ -453,6 +455,7 @@ rearrange_params() {
             --long show-modules \
             --long keep \
             --long printsize \
+            --long keep-cryptkeyfiles \
             --long regenerate-all \
             --long parallel \
             --long noimageifnotneeded \
@@ -822,6 +825,7 @@ while :; do
             ;;
         --keep) keep="yes" ;;
         --printsize) printsize="yes" ;;
+        --keep-cryptkeyfiles)        keep_cryptkeyfiles="yes";;
         --regenerate-all) regenerate_all_l="yes" ;;
         -p | --parallel) parallel_l="yes" ;;
         --noimageifnotneeded) noimageifnotneeded="yes" ;;
@@ -1936,7 +1940,7 @@ export initdir dracutbasedir \
     systemdportable systemdportableconfdir systemdsystemunitdir \
     systemdsystemconfdir systemduser systemduserconfdir \
     hostonly_cmdline loginstall tmpfilesdir tmpfilesconfdir depmodd \
-    depmodconfdir check_supported
+    depmodconfdir check_supported keep_cryptkeyfiles
 
 mods_to_load=""
 # check all our modules to see if they should be sourced.

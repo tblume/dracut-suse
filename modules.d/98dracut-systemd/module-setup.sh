@@ -53,4 +53,8 @@ install() {
     inst_simple "$moddir/dracut-tmpfiles.conf" "$tmpfilesdir/dracut-tmpfiles.conf"
 
     inst_multiple sulogin
+
+    if [ -z "$keep_cryptkeyfiles"  ]; then
+        inst_hook emergency 000 "$moddir/remove_cryptkeyfiles.sh"
+    fi
 }
