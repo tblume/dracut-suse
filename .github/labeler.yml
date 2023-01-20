@@ -228,9 +228,6 @@ virtiofs:
 zfcp:
   - modules.d/95zfcp/*
 
-zfcp_rules:
-  - modules.d/95zfcp_rules/*
-
 znet:
   - modules.d/95znet/*
 
