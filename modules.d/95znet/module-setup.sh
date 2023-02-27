@@ -5,7 +5,7 @@ check() {
     arch=${DRACUT_ARCH:-$(uname -m)}
     [ "$arch" = "s390" -o "$arch" = "s390x" ] || return 1
 
-    require_binaries znet_cio_free grep sed seq readlink || return 1
+    require_binaries grep sed seq readlink || return 1
 
     return 0
 }
@@ -24,6 +24,8 @@ installkernel() {
 # called by dracut
 install() {
     inst_hook cmdline 30 "$moddir/parse-ccw.sh"
+    inst_simple "$moddir/ccw_init" /usr/lib/udev/ccw_init
+    inst_simple "$moddir/ccw.udev" /etc/udev/rules.d/81-ccw.rules
     inst_rules 81-ccw.rules
-    inst_multiple znet_cio_free grep sed seq readlink /lib/udev/ccw_init
+    inst_multiple grep sed seq readlink /sbin/chzdev
 }
