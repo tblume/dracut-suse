@@ -21,5 +21,3 @@ for ifname in $(getargs rd.znet_ifname); do
         } > /etc/udev/rules.d/81-ccw-ifname.rules
     fi
 done
-
-znet_cio_free

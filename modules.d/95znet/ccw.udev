@@ -1,0 +1,3 @@
+ACTION!="add|bind|change", GOTO="ccw_end"
+SUBSYSTEM=="drivers", KERNEL=="qeth", RUN+="ccw_init"
+LABEL="ccw_end"
