@@ -588,7 +588,7 @@ static int resolve_deps(const char *src)
                         break;
 
                 if (strstr(buf, "cannot be preloaded"))
-                        break;
+                        continue;
 
                 if (strstr(buf, destrootdir))
                         break;
