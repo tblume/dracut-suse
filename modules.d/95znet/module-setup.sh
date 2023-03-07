@@ -23,9 +23,6 @@ installkernel() {
 
 # called by dracut
 install() {
-    inst_hook cmdline 30 "$moddir/parse-ccw.sh"
-    inst_simple "$moddir/ccw_init" /usr/lib/udev/ccw_init
-    inst_simple "$moddir/ccw.udev" /etc/udev/rules.d/81-ccw.rules
-    inst_rules 81-ccw.rules
-    inst_multiple grep sed seq readlink /sbin/chzdev
+    inst_hook pre-trigger 30 "$moddir/parse-znet.sh"
+    inst_multiple /sbin/chzdev
 }
