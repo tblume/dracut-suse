@@ -21,12 +21,13 @@ depends() {
 
 # called by dracut
 installkernel() {
-    instmods ctcm lcs qeth qeth_l2 qeth_l3  dasd_diag_mod,dasd_eckd_mod,dasd_fba_mod
+    instmods ctcm lcs qeth qeth_l2 qeth_l3  dasd_diag_mod dasd_eckd_mod dasd_fba_mod
 }
 
 # called by dracut
 install() {
-    inst_hook pre-trigger 30 "$moddir/parse-suse-znet.sh"
-    inst_hook pre-trigger 30 "$moddir/parse-suse-dasd.sh"
-    inst_multiple chzdev
+    inst_hook pre-trigger 41 "$moddir/parse-znet-suse.sh"
+    inst_hook pre-trigger 41 "$moddir/parse-dasd-suse.sh"
+    inst_hook cleanup     41 "$moddir/write-udev-live-suse.sh"
+    inst_multiple chzdev 
 }
