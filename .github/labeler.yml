@@ -165,9 +165,6 @@ cifs:
 dasd:
   - modules.d/95dasd/*
 
-dasd_mod:
-  - modules.d/95dasd_mod/*
-
 dcssblk:
   - modules.d/95dcssblk/*
 
