@@ -168,9 +168,6 @@ dasd:
 dasd_mod:
   - modules.d/95dasd_mod/*
 
-dasd_rules:
-  - modules.d/95dasd_rules/*
-
 dcssblk:
   - modules.d/95dcssblk/*
 
