@@ -16,6 +16,23 @@ netroot="$2"
 liveurl="${netroot#livenet:}"
 info "fetching $liveurl"
 
+if getargbool 0 'rd.writable.fsimg'; then
+
+    let memsize=$(($(sed -n 's/MemTotal: *\([[:digit:]]*\).*/\1/p' /proc/meminfo) / 1024))
+    let imgsize=$(($(curl -sI "$liveurl" | sed -n 's/Content-Length: *\([[:digit:]]*\).*/\1/p') / (1024 * 1024)))
+
+    if [ $((memsize - $imgsize)) -lt 512 ]; then
+        sed -i "N;/and attach it to a bug report./s/echo$/echo\n\
+        echo \n\
+        echo 'Warning!!!'\n\
+        echo 'The memory size of your system is too small for this live image.'\n\
+        echo 'Expect killed processes due to out of memory conditions.'\n\
+        echo \n\ " /usr/bin/dracut-emergency
+
+        emergency_shell
+    fi
+fi
+
 imgfile=
 #retry until the imgfile is populated with data or the max retries
 i=1
