@@ -162,9 +162,6 @@ zipl:
 cifs:
   - modules.d/95cifs/*
 
-dasd:
-  - modules.d/95dasd/*
-
 dcssblk:
   - modules.d/95dcssblk/*
 
