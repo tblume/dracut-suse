@@ -195,9 +195,6 @@ nfs:
 nvmf:
   - modules.d/95nvmf/*
 
-qeth_rules:
-  - modules.d/95qeth_rules/*
-
 resume:
   - modules.d/95resume/*
 
