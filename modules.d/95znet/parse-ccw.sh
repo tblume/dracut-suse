@@ -18,7 +18,7 @@ for ifname in $(getargs rd.znet_ifname); do
             echo "SUBSYSTEMS==\"ccwgroup\", KERNELS==\"$ifname_subchannels\", DRIVERS==\"?*\" NAME=\"$ifname_if\""
             echo 'LABEL="ccw_ifname_end"'
 
-        } > /etc/udev/rules.d/81-ccw-ifname.rules
+        } >> /etc/udev/rules.d/81-ccw-ifname.rules
     fi
 done
 
