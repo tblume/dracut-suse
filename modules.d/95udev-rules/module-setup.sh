@@ -37,7 +37,6 @@ install() {
         60-persistent-storage.rules \
         64-btrfs.rules \
         70-uaccess.rules \
-        70-persistent-net.rules \
         71-seat.rules \
         73-seat-late.rules \
         75-net-description.rules \
@@ -47,8 +46,20 @@ install() {
         "$moddir/61-persistent-storage.rules"
 
     prepare_udev_rules 59-persistent-storage.rules 61-persistent-storage.rules
-    # legacy persistent network device name rules
-    [[ $hostonly ]] && inst_rules 70-persistent-net.rules
+    # debian udev rules
+    inst_rules 91-permissions.rules
+    # eudev rules
+    inst_rules 80-drivers-modprobe.rules
+    # legacy persistent network device names versus systemd predictable names
+    # Never use both schemes at the same time!
+    if dracut_module_included "network"; then
+        if [ -e /etc/udev/rules.d/70-persistent-net.rules ]; then
+            rm -f "$systemdnetwork"/99-default.link
+            inst_rules 70-persistent-net.rules
+        elif [ -e "$systemdnetwork"/99-default.link ]; then
+            inst_rules "$systemdnetwork"/99-default.link
+        fi
+    fi
 
     {
         for i in cdrom tape dialout floppy; do
