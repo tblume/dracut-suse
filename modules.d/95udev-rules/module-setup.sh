@@ -40,7 +40,6 @@ install() {
         61-persistent-storage-edd.rules \
         64-btrfs.rules \
         70-uaccess.rules \
-        70-persistent-net.rules \
         71-seat.rules \
         73-seat-late.rules \
         75-net-description.rules \
@@ -56,7 +55,11 @@ install() {
     # eudev rules
     inst_rules 80-drivers-modprobe.rules
     # legacy persistent network device name rules
-    [[ $hostonly ]] && inst_rules 70-persistent-net.rules
+    if dracut_module_included "network"; then
+        [[ -e /etc/udev/rules.d/70-persistent-net.rules ]] && rm -f "$systemdnetwork"/99-default.link
+        inst_rules 70-persistent-net.rules
+    fi
+
 
     {
         for i in cdrom tape dialout floppy; do
