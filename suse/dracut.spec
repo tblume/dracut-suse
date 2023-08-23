@@ -27,7 +27,7 @@ Name:           dracut
 Version:        059
 Release:        0
 Summary:        Event driven initramfs infrastructure
-License:        GPLv2+ and LGPLv2+ and GPLv2
+License:        GPL-2.0-or-later AND LGPL-2.1-or-later
 Group:          System/Base
 URL:            https://github.com/dracutdevs/dracut/wiki
 Source0:        dracut-%{version}.tar.xz
