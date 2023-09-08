@@ -57,6 +57,8 @@ Requires:       modutils
 Requires:       pigz
 Requires:       sed
 Requires:       systemd >= 219
+# systemd-sysvinit provides: poweroff, reboot, halt
+Requires:       systemd-sysvinit
 Recommends:     (tpm2.0-tools if tpm2-0-tss)
 Requires:       udev > 166
 Requires:       util-linux >= 2.21
