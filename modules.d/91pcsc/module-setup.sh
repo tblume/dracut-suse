@@ -29,7 +29,8 @@ install() {
     inst_simple "$moddir/pcscd.socket" "${systemdsystemunitdir}"/pcscd.socket
 
     inst_multiple -o \
-        pcscd
+        pcscd \
+        /etc/pkcs11/modules/opensc.module
 
     # Enable systemd type unit(s)
     for i in \
