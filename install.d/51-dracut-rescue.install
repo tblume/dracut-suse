@@ -13,6 +13,11 @@ if [ "${KERNEL_INSTALL_INITRD_GENERATOR:-dracut}" != "dracut" ]; then
     exit 0
 fi
 
+# Do not attempt to create a rescue image when working with UKIs
+if [[ $KERNEL_INSTALL_LAYOUT == "uki" || $KERNEL_INSTALL_IMAGE_TYPE == "uki" ]]; then
+    exit 0
+fi
+
 dropindirs_sort() {
     suffix=$1
     shift
