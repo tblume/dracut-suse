@@ -55,7 +55,7 @@ installkernel() {
             "=drivers/watchdog"
 
         instmods \
-            yenta_socket spi_pxa2xx_platform \
+            yenta_socket intel_lpss_pci spi_pxa2xx_platform \
             atkbd i8042 firewire-ohci pcmcia hv-vmbus \
             virtio virtio_ring virtio_pci pci_hyperv \
             "=drivers/pcmcia"
@@ -87,6 +87,7 @@ installkernel() {
                 "=drivers/rtc" \
                 "=drivers/soc" \
                 "=drivers/spi" \
+                "=drivers/spmi" \
                 "=drivers/usb/chipidea" \
                 "=drivers/usb/dwc2" \
                 "=drivers/usb/dwc3" \
@@ -95,7 +96,8 @@ installkernel() {
                 "=drivers/usb/misc" \
                 "=drivers/usb/musb" \
                 "=drivers/usb/phy" \
-                "=drivers/scsi/hisi_sas"
+                "=drivers/scsi/hisi_sas" \
+                "=net/qrtr"
         fi
 
         awk -F: '/^\// {print $1}' "$srcmods/modules.dep" 2> /dev/null | instmods
