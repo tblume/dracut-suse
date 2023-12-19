@@ -309,6 +309,7 @@ long_version() {
 push_host_devs() {
     local _dev
     for _dev in "$@"; do
+        [[ -z $_dev ]] && continue
         [[ " ${host_devs[*]} " == *" $_dev "* ]] && return
         host_devs+=("$_dev")
     done
