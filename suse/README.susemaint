@@ -329,4 +329,8 @@ PR      Commit message
 2611    fix(livenet): propagate error code
 2611    fix(livenet): check also `content-length` from live image header
 2611    fix(livenet): split `imgsize` calculation to avoid misleading error message
+2613    fix(i18n): handle symlinked keymap
+2614    fix(dracut-systemd): replace `rd.udev.log-priority` with `rd.udev.log_level`
+2618    fix(i18n): handle keymap includes with `--sysroot`
+2618    fix(dracut-init.sh): handle decompress with `--sysroot`
 
