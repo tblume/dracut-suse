@@ -94,7 +94,7 @@ using `git log --oneline 0aa08f0e..HEAD`:
 MERGED  4971f443 fix(systemd-journald): add systemd-sysusers dependency
 MERGED  4d594210 fix(dracut-initramfs-restore.sh): do not set selinux labels if disabled
 MERGED  1586af09 fix(systemd-repart): correct undefined $libdir
-        bddffeda fix(overlayfs): split overlayfs mount in two steps
+MERGED  bddffeda fix(overlayfs): split overlayfs mount in two steps
 MERGED  1c762c0d fix(pkcs11): delete trailing dot on libcryptsetup-token-systemd-pkcs11.so
         856e7acd docs: update NEWS.md and AUTHORS
 MERGED  b2af8c8b fix(install.d): do not create initramfs if the supplied image is UKI
