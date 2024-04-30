@@ -221,6 +221,10 @@ if [ -L /var/run ] && [ -f /etc/dracut.conf.d/05-convertfs.conf ]; then
     [ -d /var/lock.lockmove~ ] && rm -rf /var/lock.lockmove~ || :
     [ -d /var/run.runmove~ ] && rm -rf /var/run.runmove~ || :
 fi
+
+# remove obsolete legacy fillup template for /etc/sysconfig/kernel
+[ -f /var/adm/fillup-templates/sysconfig.kernel-mkinitrd ] && rm -f /var/adm/fillup-templates/sysconfig.kernel-mkinitrd
+
 %{?regenerate_initrd_post}
 
 %post fips
