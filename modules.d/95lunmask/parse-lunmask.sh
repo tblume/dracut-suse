@@ -33,6 +33,7 @@ for lunmask_arg in $(getargs rd.lunmask); do
         if [ -d /sys/module/scsi_mod ]; then
             printf "manual" > /sys/module/scsi_mod/parameters/scan
         elif [ ! -f /etc/modprobe.d/95lunmask.conf ]; then
+            mkdir -p /etc/modprobe.d
             echo "options scsi_mod scan=manual" > /etc/modprobe.d/95lunmask.conf
         fi
         create_udev_rule "$1" "$2" "$3"
