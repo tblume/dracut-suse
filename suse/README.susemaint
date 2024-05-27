@@ -351,4 +351,5 @@ were already merged
 
 a45048b8 fix(dracut): move hooks directory from /usr/lib to /var/lib
 424717af fix: /etc/modprobe.d --> /run/modprobe.d (partially reverted)
+4cc962aa fix(systemd-ask-password): no graphical output in aarch64
 
