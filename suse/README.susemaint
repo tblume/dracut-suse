@@ -10,6 +10,7 @@ branch. Currently, these active maintenance branches are:
 - SUSE/049              -> SLE 15 SP2, SLE 15 SP3
 - SUSE/055              -> SLE 15 SP4
 - SLE-15-SP5_Update     -> SLE 15 SP5 (based on SUSE/055 plus some specific patches)
+- SLE-15-SP6_Update     -> SLE 15 SP6
 - SL-Micro-6.0_Update   -> SL Micro 6.0
 - SUSE/059              -> Tumbleweed
 
