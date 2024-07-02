@@ -142,7 +142,7 @@ install() {
             forceentry=""
             while [ $# -gt 0 ]; do
                 case $1 in
-                    force)
+                    force | x-initrd.attach)
                         forceentry="yes"
                         break
                         ;;
