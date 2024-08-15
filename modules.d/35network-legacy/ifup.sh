@@ -176,6 +176,16 @@ dhcp_wicked_run() {
         return 1
     fi
 
+    #skip interfaces from iscsi offload cards
+    if getargbool 0 rd.iscsi.firmware; then
+        storageonly=$(wicked ethtool "$netif" --show-priv-flags 2>/dev/null | \
+        sed -n '/Storage only interface: on/p')
+        if [ -n "$storageonly" ]; then
+            info "Skipping Storage only interface $netif"
+            return 0
+        fi
+    fi
+
     if dhcp_wicked_read_ifcfg ; then
         [ -n "$macaddr" ] && ip "$_ipv" link set address $macaddr dev $netif
         [ -n "$mtu" ] && ip "$_ipv" link set mtu $mtu dev $netif
